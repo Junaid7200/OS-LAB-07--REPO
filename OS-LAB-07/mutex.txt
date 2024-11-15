@@ -1,0 +1,8 @@
+yo yo, this is some mutex code that we learnt in pervious labs, 
+
+
+pthread_mutex_t = mutex
+
+pthread_mutex_init()
+
+pthread_mutex_destroy()
