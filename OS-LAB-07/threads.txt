@@ -1,0 +1,26 @@
+this is some previous stuff that we studied in previous labs
+
+	"#define BUFFER_SIZE 5  // Size of the shared buffer",
+
+					"int buffer[BUFFER_SIZE];  // Shared buffer",
+					"int count = 0;            // Number of items in the buffer",
+					
+					"sem_t empty;              // Semaphore to count empty slots",
+					"sem_t full;               // Semaphore to count full slots",
+					"pthread_mutex_t mutex;    // Mutex to ensure mutual exclusion on buffer",
+
+					"sem_wait(&empty);            // Wait if buffer is full",
+					"pthread_mutex_lock(&mutex);   // Enter critical section",
+
+					"pthread_mutex_unlock(&mutex); // Exit critical section",
+					"sem_post(&full);              // Signal that buffer has a new item",
+
+					"sem_wait(&full);             // Wait if buffer is empty",
+        			"pthread_mutex_lock(&mutex);  // Enter critical section",
+
+					"pthread_mutex_unlock(&mutex); // Exit critical section",
+        			"sem_post(&empty);             // Signal that buffer has an empty slot",
+
+					"sem_init(&empty, 0, BUFFER_SIZE);  // Start with all slots empty",
+					"sem_init(&full, 0, 0);             // Start with buffer empty",
+					"pthread_mutex_init(&mutex, NULL);",
